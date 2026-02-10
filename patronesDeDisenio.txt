@@ -1,0 +1,16 @@
+// Patrón: Tabla de comandos (Command Pattern)
+typedef struct {
+    char *nombre;
+    void (*funcion)(char **);
+    char *descripcion;
+    char *uso;
+} Comando;
+
+Comando comandos[] = {
+    {"listar", cmd_listar, "Lista archivos", "listar [opciones]"},
+    {"leer", cmd_leer, "Lee archivo", "leer <archivo>"},
+    // ...
+};
+
+// Patrón: Módulos independientes
+// Cada comando en archivo separado, compilado por separado

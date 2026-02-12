@@ -22,6 +22,22 @@ void cmd_listar(char **args);
 void cmd_leer(char **args);
 
 /**
+ * @brief Crea un archivo vacío en el directorio actual.
+ * 
+ * Uso esperado:
+ *   crear nombre_archivo.txt
+ */
+void cmd_crear(char **args);
+
+/**
+ * @brief Elimina un archivo del directorio actual.
+ * 
+ * Uso esperado:
+ *   eliminar nombre_archivo.txt
+ */
+void cmd_eliminar(char **args);
+
+/**
  * @brief Muestra la hora del sistema.
  */
 void cmd_tiempo(char **args);

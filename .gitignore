@@ -1,0 +1,47 @@
+# Compiled object files
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+shell.exe
+
+# Build directories
+/build/
+/bin/
+
+# Libraries and DLLs
+*.dll
+*.lib
+
+# Coverage and profiling
+*.gcda
+*.gcno
+
+# Logs and temporary files
+*.log
+*.tmp
+*~
+*.swp
+
+# IDEs and editors
+.vscode/
+.idea/
+.vs/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# OneDrive temporary or sync files
+~$*
+*.lnk
+
+# MSYS2 / MinGW folders (ignore local installations)
+/msys64/
+/mingw64/
+
+# Ignore compiled python caches if any
+__pycache__/

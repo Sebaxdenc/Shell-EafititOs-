@@ -59,3 +59,23 @@ void cmd_eliminar(char **args) {
     }
 }
 
+/**
+ * @brief Comando LIMPIAR
+ *
+ * Limpia toda la pantalla y el buffer de scroll, desapareciendo completamente
+ * el contenido anterior sin desplazarlo.
+ * Utiliza códigos de escape ANSI para limpiar completamente la terminal.
+ *
+ * @param args Argumentos del comando (ignorados).
+ */
+void cmd_limpiar(char **args) {
+    // \033[H  -> Mueve el cursor a la posición inicial (arriba a la izquierda)
+    // \033[2J -> Borra todo el texto de la pantalla visible
+    // \033[3J -> Borra el "scrollback buffer" (el historial hacia arriba)
+    printf("\033[H\033[2J\033[3J");
+    
+    // Fuerza a la consola a imprimir esto inmediatamente
+    fflush(stdout);
+    (void)args; // Silenciar advertencia sobre argumento no usado
+}
+

@@ -41,13 +41,13 @@ char *nombres_comandos[] = {
 void (*func_comandos[]) (char **) = {
     &cmd_listar,
     &cmd_leer,
+    &cmd_crear,
+    &cmd_eliminar,
     &cmd_tiempo,
     &cmd_calc,
     &cmd_ayuda,
-    &cmd_salir,
-    &cmd_crear,
-    &cmd_eliminar,
-    &cmd_limpiar
+    &cmd_limpiar,
+    &cmd_salir
 };
 
 /**

@@ -1,0 +1,8 @@
+# Contribución de Miembros
+
+|  Nombre                                 | Código | Rol     | Tareas Asignadas                                      | % Contribución |
+|-----------------------------------------|--------|---------|-------------------------------------------------------|----------------|
+| Juan Carlos Muñoz Trejos                | 1032176998   | Líder   | Diseño, implementación del core y del shell loop     | 50%            |
+| Sebastian Medina Cabezas                | 1058198772   | Dev     | Implementación de comandos, parser y pruebas         | 50%            |
+
+Total: 100%

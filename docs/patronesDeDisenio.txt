@@ -1,0 +1,39 @@
+// Patrón: Tabla de comandos (Command Pattern)
+typedef struct {
+    char *nombre;
+    void (*funcion)(char **);
+    char *descripcion;
+    char *uso;
+} Comando;
+
+Comando comandos[] = {
+    {"listar", cmd_listar, "Lista archivos", "listar [opciones]"},
+    {"leer", cmd_leer, "Lee archivo", "leer <archivo>"},
+    // ...
+};
+
+// Patrón: Módulos independientes
+// Cada comando en archivo separado, compilado por separado
+
+-----------------------------------------
+
+1) Command / Table-Driven Dispatch
+    - Descripción: Registro de comandos que mapea nombres a funciones (punteros a función). Permite despachar llamadas a funciones por nombre.
+    - Implementación en este proyecto: arrays paralelos `nombres_comandos` y `func_comandos` en `src/core/shellLoop.c`.
+
+2) Strategy (comportamiento intercambiable mediante punteros a función)
+    - Descripción: Cada comando está implementado como una función separada y se pasa/almacena como puntero; el despacho selecciona la estrategia a ejecutar.
+    - Implementación en este proyecto: uso de `void (*func)(char **)` para ejecutar distintos comandos desde la misma lógica de control (`shellLoop`).
+
+3) Modularización / Single Responsibility
+    - Descripción: Separación del código en módulos independientes con responsabilidades claras (parser, core/shell loop, comandos, utilidades).
+    - Implementación en este proyecto: carpetas y archivos separados como `src/core/parser.c`, `src/core/shellLoop.c`, `src/commands/*`.
+
+4) Registry (tabla de registro estática)
+    - Descripción: Registro estático de servicios/comandos en tablas que facilita añadir/quitar entradas sin cambiar el motor de despacho.
+    - Implementación en este proyecto: `nombres_comandos` + `func_comandos` actúan como registro estático de comandos.
+
+5) Procedural decomposition (patrón arquitectónico simple)
+    - Descripción: En aplicaciones C pequeñas, la descomposición en funciones y módulos es el enfoque predominante para lograr claridad y reutilización.
+    - Implementación en este proyecto: función `cmd_listar`, `cmd_leer`, `cmd_calc`, `cmd_salir`, etc., cada una en su módulo lógico.
+

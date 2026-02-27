@@ -36,6 +36,109 @@ void cmd_ayuda(char **args) {
 }
 
 /**
+ * @brief Comando LISTAR (ls)
+ *
+ * Abre el directorio actual (".") e itera sobre sus entradas para mostrar los nombres.
+ *
+ * @param args Argumentos del comando (ignorados en esta versión simple).
+ */
+void cmd_listar(char **args) {
+    DIR *d;               // Puntero al flujo del directorio
+    struct dirent *dir;   // Estructura que representa una entrada (archivo/carpeta)
+
+    d = opendir(".");
+    
+    if (d) {
+        printf("Archivos en el directorio actual:\n");
+        while ((dir = readdir(d)) != NULL) {
+            if (strcmp(dir->d_name, ".") != 0 && strcmp(dir->d_name, "..") != 0) {
+                printf("  %s\n", dir->d_name);
+            }
+        }
+        closedir(d);
+    } else {
+        perror("Error al abrir directorio");
+    }
+    (void)args;
+}
+
+/**
+ * @brief Comando LEER (cat)
+ *
+ * Abre un archivo en modo lectura, lee su contenido caracter por caracter
+ * y lo imprime en la terminal.
+ *
+ * @param args args[1] debe contener la ruta o nombre del archivo a leer.
+ */
+void cmd_leer(char **args) {
+    if (args[1] == NULL) {
+        printf("Error: Debes especificar un archivo para leer.\nUso: leer <nombre_archivo>\n");
+        return;
+    }
+
+    FILE *fp = fopen(args[1], "r");
+    if (fp == NULL) {
+        printf("Error: No se pudo abrir el archivo '%s'. Verifique que exista.\n", args[1]);
+        return;
+    }
+
+    int ch;
+    while ((ch = fgetc(fp)) != EOF) {
+        putchar(ch);
+    }
+    printf("\n");
+
+    fclose(fp);
+}
+/**
+ * @brief Comando CALC (Calculadora)
+ *
+ * Realiza operaciones aritméticas básicas entre dos números.
+ * Sintaxis esperada: calc <num1> <operador> <num2>
+ *
+ * @param args Lista de argumentos donde:
+ *             args[1]: Primer operando (cadena)
+ *             args[2]: Operador (+, -, *, /)
+ *             args[3]: Segundo operando (cadena)
+ */
+void cmd_calc(char **args) {
+    if (args[1] == NULL || args[2] == NULL || args[3] == NULL) {
+        printf("Uso: calc <num1> <operador> <num2>\nEjemplo: calc 5 + 3\n");
+        return;
+    }
+
+    float n1 = atof(args[1]);
+    char op = args[2][0];
+    float n2 = atof(args[3]);
+    float res = 0;
+
+    switch(op) {
+        case '+':
+            res = n1 + n2;
+            break;
+        case '-':
+            res = n1 - n2;
+            break;
+        case '*':
+        case 'x':
+            res = n1 * n2;
+            break;
+        case '/':
+            if (n2 == 0) {
+                printf("Error: División por cero no permitida.\n");
+                return;
+            }
+            res = n1 / n2;
+            break;
+        default:
+            printf("Error: Operador '%c' no reconocido. Use +, -, * o /.\n", op);
+            return;
+    }
+
+    printf("Resultado: %.2f\n", res);
+}
+
+/**
  * @brief Comando SALIR
  * 
  * Finaliza la ejecución del programa de forma controlada.

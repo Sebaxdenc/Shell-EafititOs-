@@ -6,8 +6,6 @@ eafitos/
 │   │   └── parser.c            # Parseo de comandos
 │   ├── commands/               # Comandos por categoría
 │   │   ├── basic_commands.c    # 6 comandos básicos
-│   │   ├── file_commands.c     # Comandos de archivos
-│   │   ├── system_commands.c   # Comandos del sistema
 │   │   └── advanced_commands.c # Comandos avanzados
 │   └── utils/                  # Utilidades
 │       ├── memory_manager.c    # Gestión de memoria
@@ -18,10 +16,6 @@ eafitos/
 │   ├── commands.h
 │   ├── parser.h
 │   └── utils.h
-├── tests/                      # Pruebas
-│   ├── unit_tests.c
-│   ├── integration_tests.c
-│   └── test_runner.sh
 ├── docs/                       # Documentación
 │   ├── API.md
 │   ├── DESIGN.md
@@ -34,21 +28,3 @@ eafitos/
 ├── CONTRIBUTORS.md            # Colaboradores y roles
 ├── CHANGELOG.md               # Historial de cambios
 └── LICENSE                    # Licencia del proyecto
-
-
---------------------------------------------------------------------------------------------
-
-
-NOMBRE_PROYECTO/
-├── src/                      # Código fuente organizado
-├── docs/
-│   ├── ROLES.md             # Descripción de roles y contribuciones
-│   └── DESIGN_DECISIONS.md  # Decisiones de diseño
-├── entregables/
-│   ├── informe.pdf          # Informe técnico (opcional)
-│   └── presentacion.pptx    # Presentación (si aplica)
-└── README.md                # Debe incluir:
-    - Integrantes y porcentajes
-    - Diagrama de arquitectura
-    - Instrucciones de compilación
-    - Guía de uso completa

@@ -6,6 +6,9 @@
  * en una estructura de datos (lista de argumentos) que el sistema pueda procesar.
  */
 
+/* Enable GNU extensions for getline() on POSIX systems */
+#define _GNU_SOURCE
+
 #include <stdio.h>  // Para getline, perror, fprintf, stdin
 #include <stdlib.h> // Para malloc, realloc, free, exit
 #include <string.h> // Para strtok
